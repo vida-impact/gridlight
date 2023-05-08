@@ -1,4 +1,4 @@
-# gridfinder
+# Gridlight
 
 gridfinder uses night-time lights imagery to as an indicator of settlements/towns with grid electricity access. Then a minimum spanning tree is calculated for these connect points, using a many-to-many variant Dijkstra algorithm and using existing road networks as a cost function. Adapted from [this work from Facebook](https://github.com/facebookresearch/many-to-many-dijkstra). Currently gridfinder only uses road networks, but it would be trivial to add other cost parameters such as slope or terrain.
 
@@ -8,7 +8,7 @@ The algorithm looks as follows in process, guessing the grid network for Uganda:
 
 ## Input requirements
 gridfinder requires the following data sources:
-- VIIRS data, monthly and annual composites available [here](https://ngdc.noaa.gov/eog/viirs/download_dnb_composites.html).
+- VIIRS data, monthly and annual composites available [here](https://payneinstitute.mines.edu/eog/nighttime-lights/).
 - OSM highway data, most easily available using the [HOT Export Tool](https://export.hotosm.org/en/v3/), otherwise [BBBike](https://extract.bbbike.org/) or [geofabrik](https://download.geofabrik.de/), depending on your needs.
 
 ## Model usage
@@ -54,3 +54,4 @@ Download or clone the repository and install the required packages (preferably i
     pip install -r requirements.txt
 
 You can run ```./test.sh``` in the directory, which will do an entire run through using the test data and confirm whether everything is set up properly. (It will fail if jupyter isn't installed!)
+
