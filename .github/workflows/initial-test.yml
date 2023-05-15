@@ -1,0 +1,33 @@
+name: initial
+on:
+  push:
+    branches: [ "build-python-package" ]
+# jobs:
+#   echo-hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repo
+#         uses: actions/checkout@v3
+#       - name: Install Poetry
+#         uses: snok/install-poetry@v1
+#         with:
+#           version: 1.4.2
+#           virtualenvs-create: true
+#           virtualenvs-in-project: true
+#           installer-parallel: true
+#       - name: Build package
+#         run: |
+#           poetry build
+#           echo "Done"
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.16
+        with:
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
+          repository_name: "testpypi"
+          repository_url: "https://test.pypi.org/legacy/"
