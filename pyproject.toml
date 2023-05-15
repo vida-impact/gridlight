@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gridlight"
-version = "0.1.0"
+version = "0.2.0"
 description = "A package to predict electrification status of settlements and MV power line predictions using NASA VIIRS nightlight imagery."
 authors = []
 license = "MIT"
