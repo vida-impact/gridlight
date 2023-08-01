@@ -20,3 +20,11 @@ def open_raster_in_tar(
     with open_file_in_tar(path, file_regex) as raster_in_bytes:
         with rasterio.open(raster_in_bytes) as raster:
             yield raster
+
+@contextmanager
+def open_raster_files(
+    path: Union[str, PathLike]
+):
+    
+    with rasterio.open(path) as raster:
+        yield raster   

@@ -13,19 +13,19 @@ __default_remote_storage = None
 __develop_remote_storage = None
 
 
-def get_default_remote_storage():
+def get_default_remote_storage(config_type):
     global __default_remote_storage
-    c = get_config()
-    if __default_remote_storage is None:
-        __default_remote_storage = RemoteStorage(c.remote_storage)
+    # c = get_config()
+    # if __default_remote_storage is None:
+    __default_remote_storage = RemoteStorage(config_type.remote_storage)
     return __default_remote_storage
 
 
-def get_develop_remote_storage():
+def get_develop_remote_storage(config_type):
     global __develop_remote_storage
-    c = get_config()
-    if __develop_remote_storage is None:
-        __develop_remote_storage = RemoteStorage(c.development_remote_storage)
+    # c = get_config()
+    # if __develop_remote_storage is None:
+    __develop_remote_storage = RemoteStorage(config_type.development_remote_storage)
     return __develop_remote_storage
 
 

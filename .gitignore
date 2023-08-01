@@ -1,5 +1,6 @@
 # Custom
 config_local.json
+config_local_1.json
 server/
 test_output/
 quickrun.py
@@ -123,3 +124,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+vida_key.json
+global/
+raster/
+data/

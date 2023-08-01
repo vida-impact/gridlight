@@ -1,5 +1,5 @@
 {
-  "data_raw": "./data/raw",
+  "data_raw": "./global/nightlight",
   "data_cleaned": "./data/cleaned",
   "data_processed": "./data/processed",
   "data_ground_truth": "./data/ground_truth",
