@@ -9,7 +9,8 @@ from rasterio import DatasetReader
 from shapely.geometry import Point, Polygon, MultiPolygon
 
 from src.gridlight.util.raster import save_2d_array_as_raster, get_clipped_data
-
+from src.gridlight.util.remote_storage import  get_develop_remote_storage
+from config import get_config_1
 
 @pytest.fixture()
 def output_file(tmpdir_factory):
@@ -30,6 +31,17 @@ def sample_mul_polygon_geodf(test_resources) -> gpd.GeoDataFrame:
     multi_polygon = MultiPolygon(polygons_geodf.geometry.values)
     return gpd.GeoDataFrame({"geometry": [multi_polygon]}, crs=polygons_geodf.crs)
 
+def test_raster_tile_existence(tile:str, date:str):
+    c = get_config_1()
+    remote_storage = get_develop_remote_storage(c)
+    ntl_filename = f"{date.strftime('%Y')}"
+    filepath =c.datafile_path(
+        f"{tile}/{ntl_filename}",
+        stage=c.RAW,
+        check_existence=False,
+        relative=True,
+    )
+    assert len(remote_storage.list_objects(filepath)) == 12
 
 def test_save_2d_array_as_raster_inputValidation(
     three_dim_array, sample_transform, output_file, default_crs
